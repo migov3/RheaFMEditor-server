@@ -1,0 +1,26 @@
+namespace Pizza
+
+features
+	Pizza {abstract}	
+		mandatory
+			Topping	
+				or
+					Salami {cost "1.5", vegan "false", provider "Aldi"}
+					Ham {cost "1.0", vegan "false", provider "Aldi"}
+					Mozzarella {cost "1.25", vegan "true", provider "Lidl"}
+			Size	
+				alternative
+					Normal
+					Big
+			Dough	
+				alternative
+					Neapolitan
+					Sicilian
+
+		optional
+			CheesyCrust
+			Salt {NF "[1,3,5]", cost "0.5", vegan "true", provider "Mercadona"}
+			Pepper {NF "[1,5]", cost "0.5", vegan "true", provider "Mercadona"}
+
+constraints
+	CheesyCrust => Big
